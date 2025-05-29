@@ -1,5 +1,5 @@
 #  <h2>Short Description</h2>
-This project is a task management application where users can add tasks, categorize them into three categories: To-Do, In Progress, and Done. Initially, tasks are added to the To-Do category. Users can move tasks to In Progress by clicking a button and then mark them as Done when completed. Only authenticated users can add, view, update, and delete their own tasks. Unauthorized users cannot access any tasks.
+This is a secure and user-friendly Task Dashboard application where users can manage daily tasks and set monthly goals. It supports task creation, updating, deletion, and completion. Monthly goals can also be updated or removed. The entire platform is protected by authentication, ensuring that only logged-in users can access and manage their data securely.
 
 #  <h2> Live links </h2>
 https://task-project-f36ff.web.app/
