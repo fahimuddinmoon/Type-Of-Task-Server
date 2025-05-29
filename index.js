@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { default: axios } = require('axios');
 require('dotenv').config()
 
 const port = process.env.PORT || 5000
@@ -206,17 +207,16 @@ async function run() {
             const result = await goalCollection.updateOne(filter, UpdateInfo)
             res.send(result)
         })
-        // app.patch('/allcomplete/category/update/:id', async (req, res) => {
-        //     const id = req.params.id
-        //     const filter = { _id: new ObjectId(id) }
-        //     const updateData = {
-        //         $set: {
-        //             category: 'Done'
-        //         }
-        //     }
-        //     const result = await taskCollection.updateOne(filter, updateData)
-        //     res.send(result)
-        // })
+        app.get('/api/quote', async (req, res) => {
+            try {
+                const response = await axios.get('https://zenquotes.io/api/random');
+                res.send(response.data);
+            } catch (error) {
+                console.error('Quote fetch error:', error.message);  
+                res.status(500).json({ message: 'Failed to fetch quote' });
+            }
+        });
+
         // Send a ping to confirm a successful connection
         // await client.db("admin").command({ ping: 1 });
         // console.log("Pinged your deployment. You successfully connected to MongoDB!");
